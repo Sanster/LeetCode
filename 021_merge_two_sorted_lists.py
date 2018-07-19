@@ -2,12 +2,7 @@
 https://leetcode.com/problems/merge-two-sorted-lists/description/
 """
 from typing import List
-
-
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+from utils import createList, ListNode, compareList
 
 
 class Solution:
@@ -50,25 +45,6 @@ class Solution:
             cur = cur.next
         cur.next = l1 or l2
         return head.next
-
-
-def createList(num: List[int]) -> ListNode:
-    first = ListNode(num[0])
-    last = first
-    for n in num[1:]:
-        node = ListNode(n)
-        last.next = node
-        last = node
-    return first
-
-
-def compareList(listNode: ListNode, nums: List[int]):
-    node = listNode
-    for num in nums:
-        if node is None or num != node.val:
-            return False
-        node = node.next
-    return True
 
 
 if __name__ == '__main__':
