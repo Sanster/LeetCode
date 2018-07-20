@@ -23,13 +23,16 @@ def createList(num: List[int]) -> ListNode:
     return first
 
 
-def compareList(listNode: ListNode, nums: List[int]):
-    node = listNode
-    for num in nums:
-        if node is None or num != node.val:
-            return False
+def compareList(node: ListNode, nums: List[int]):
+    node_vals = []
+    while node is not None:
+        node_vals.append(node.val)
         node = node.next
-    return True
+
+    if len(node_vals) != len(nums):
+        return False
+
+    return node_vals == nums
 
 
 def printList(node: ListNode):
