@@ -24,6 +24,9 @@ def createList(num: List[int]) -> ListNode:
 
 
 def compareList(node: ListNode, nums: List[int]):
+    if node is None and nums is None:
+        return True
+
     node_vals = []
     while node is not None:
         node_vals.append(node.val)
