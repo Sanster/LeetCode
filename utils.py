@@ -10,7 +10,7 @@ class ListNode:
         if self.next is None:
             return '%d -> None' % self.val
         else:
-            return '%d -> %d' % (self.val, self.next.val)
+            return '%d -> %s' % (self.val, self.next)
 
 
 def createList(num: List[int]) -> ListNode:
