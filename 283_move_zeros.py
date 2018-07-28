@@ -22,16 +22,23 @@ class Solution:
         for i in range(len(nums)):
             nums[i] = res[i]
 
-    def moveZeros2(self, nums: List[int]):
+    def moveZeroes2(self, nums: List[int]):
         """
-        把原问题转换成：讲所有非 0 元素梵高
+        把原问题转换成：将所有非 0 元素移动到数组的开头，并且保持原来的顺序
         Time O(n)
         Space O(1)
         """
+
+        # 通过一个指针来记录从哪个 index 开始后面都是 0
         lastNoneZeroIndex = 0
 
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[lastNoneZeroIndex] = nums[i]
+                lastNoneZeroIndex += 1
 
-
+        for i in range(lastNoneZeroIndex, len(nums)):
+            nums[i] = 0
 
 
 if __name__ == "__main__":
@@ -59,4 +66,28 @@ if __name__ == "__main__":
 
     nums = [0, 0, 1]
     s.moveZeroes(nums)
+    assert nums == [1, 0, 0]
+
+    nums = [0, 1, 0, 3, 12]
+    s.moveZeroes2(nums)
+    assert nums == [1, 3, 12, 0, 0]
+
+    nums = [0, 1, 0, 0, 0]
+    s.moveZeroes2(nums)
+    assert nums == [1, 0, 0, 0, 0]
+
+    nums = [0]
+    s.moveZeroes2(nums)
+    assert nums == [0]
+
+    nums = [1, 2, 3, 4]
+    s.moveZeroes2(nums)
+    assert nums == [1, 2, 3, 4]
+
+    nums = []
+    s.moveZeroes2(nums)
+    assert nums == []
+
+    nums = [0, 0, 1]
+    s.moveZeroes2(nums)
     assert nums == [1, 0, 0]
