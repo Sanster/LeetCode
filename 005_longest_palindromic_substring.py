@@ -38,9 +38,38 @@ class Solution:
                         max_len = j - i + 1
         return ans
 
+    def longestPalindrome2(self, s: str) -> str:
+        """
+        Time: O(n)
+        Space: O(1)
+        """
+        end = 0
+        start = 0
+        for i in range(len(s)):
+            # 对于回文字符数是奇数的情况
+            len1 = self.expandAroundCenter(s, i, i)
+            # 对于回文字符数是偶数的情况
+            len2 = self.expandAroundCenter(s, i, i + 1)
+            max_len = max(len1, len2)
+            if max_len > (end - start):
+                start = i - (max_len - 1) // 2
+                end = i + max_len // 2
+        return s[start: end + 1]
+
+    def expandAroundCenter(self, s: str, left: int, right: int) -> int:
+        # 从中间开始像两边
+        while left >= 0 and right < len(s) and s[left] == s[right]:
+            left -= 1
+            right += 1
+        return right - left - 1
+
 
 if __name__ == '__main__':
     s = Solution()
-    # print(s.longestPalindrome('babad'))
-    # print(s.longestPalindrome('aabad'))
+    print(s.longestPalindrome('babad'))
+    print(s.longestPalindrome('aabad'))
     print(s.longestPalindrome('cbbd'))
+
+    print(s.longestPalindrome2('babad'))
+    print(s.longestPalindrome2('aabad'))
+    print(s.longestPalindrome2('cbbd'))
