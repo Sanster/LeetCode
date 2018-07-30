@@ -43,3 +43,10 @@ def printList(node: ListNode):
     while n is not None:
         print(n)
         n = n.next
+
+
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
