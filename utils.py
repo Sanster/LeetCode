@@ -23,7 +23,7 @@ def createList(num: List[int]) -> ListNode:
     return first
 
 
-def compareList(node: ListNode, nums: List[int]):
+def compareList(node: ListNode, nums: List[int]) -> bool:
     if node is None and nums is None:
         return True
 
