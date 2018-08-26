@@ -34,7 +34,7 @@ class Solution:
     def mergeTwoLists1(self, l1, l2):
         # Time:  O(n)
         # Space: O(1)
-        head = cur = ListNode(0)
+        dummy = cur = ListNode(0)
         while l1 and l2:
             if l1.val < l2.val:
                 cur.next = l1
@@ -44,7 +44,7 @@ class Solution:
                 l2 = l2.next
             cur = cur.next
         cur.next = l1 or l2
-        return head.next
+        return dummy.next
 
 
 if __name__ == '__main__':
