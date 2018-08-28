@@ -52,11 +52,12 @@ class Solution:
             root = root.left
         return root
 
-    def trimBST(self, root: TreeNode, L: int, R: int) -> TreeNode:
+    def trimBST2(self, root: TreeNode, L: int, R: int) -> TreeNode:
         def trim(node: TreeNode) -> TreeNode:
             if not node:
                 return None
             elif node.val > R:
+                # 右子树的值都大于 node.val，当 node.val 都大于 R，则直接抛弃右子树
                 return trim(node.left)
             elif node.val < L:
                 return trim(node.right)
