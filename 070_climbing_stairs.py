@@ -49,7 +49,10 @@ class Solution:
         Time O(n)
         Space O(1)
 
-        假设 n=5，则爬梯子的方法数可以是从 n=4 的地方走 1 步，或者从 n=3 的地方走 1 步(两格)
+        假设 n=4，则爬梯子的方法数可以是从 n=3 的地方走 1 格，或者从 n=2 的地方走两格
+
+        n=3 时组合有：111, 12, 21  走一格变成：1111, 121, 211
+        n=2 时组合有：11, 2 走两格变成：112, 22
         """
         if n == 1:
             return 1
@@ -83,3 +86,4 @@ if __name__ == "__main__":
     assert s.climbStairs3(2) == 2
     assert s.climbStairs3(3) == 3
     assert s.climbStairs3(4) == 5
+    assert s.climbStairs3(5) == 8
