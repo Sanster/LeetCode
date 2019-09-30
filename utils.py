@@ -126,6 +126,21 @@ def btree_inorder_traverse(tree: TreeNode) -> List[int]:
     return out
 
 
+def btree_inorder_traverse_stack(tree: TreeNode) -> List[int]:
+    stack = []
+    node = tree
+    out = []
+    while node or stack:
+        # 把所有节点的左子树 append 进去
+        while node:
+            stack.append(node)
+            node = node.left
+        node = stack.pop()
+        out.append(node.val)
+        node = node.right
+    return out
+
+
 def btree_postorder_traverse(tree: TreeNode) -> List[int]:
     if tree is None:
         return [None]
@@ -149,4 +164,6 @@ if __name__ == "__main__":
     assert btree_preorder_traverse(tree) == [10, 5, 3, 3, -2, 2, 1, -3, 11]
 
     print(btree_inorder_traverse(tree))
+    print(btree_inorder_traverse_stack(tree))
+
     print(btree_postorder_traverse(tree))
