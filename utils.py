@@ -1,3 +1,4 @@
+import timeit
 from collections import deque
 from typing import List, Optional
 
@@ -9,9 +10,9 @@ class ListNode:
 
     def __str__(self):
         if self.next is None:
-            return '%d -> None' % self.val
+            return "%d -> None" % self.val
         else:
-            return '%d -> %s' % (self.val, self.next)
+            return "%d -> %s" % (self.val, self.next)
 
 
 def createList(num: List[int]) -> ListNode:
@@ -69,7 +70,9 @@ def createBTree(vals: List[int]) -> Optional[TreeNode]:
             node.left = TreeNode(vals[idx]) if vals[idx] is not None else None
             queue.append(node.left)
             if idx + 1 < len(vals):
-                node.right = TreeNode(vals[idx + 1]) if vals[idx + 1] is not None else None
+                node.right = (
+                    TreeNode(vals[idx + 1]) if vals[idx + 1] is not None else None
+                )
                 queue.append(node.right)
                 idx += 1
             idx += 1
@@ -154,6 +157,11 @@ def btree_postorder_traverse(tree: TreeNode) -> List[int]:
 
     out.append(tree.val)
     return out
+
+
+def run_timeit(name, func, number):
+    second = timeit.timeit(func, number=number)
+    print(f"{name}: {second*1000}ms")
 
 
 if __name__ == "__main__":
