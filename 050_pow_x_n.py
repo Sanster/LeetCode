@@ -34,7 +34,7 @@ class Solution:
             n = -n
         y = 1
         while n:
-            if n & 1:
+            if n & 1:  # 奇数1，偶数0
                 y *= x
             x *= x
             n = n // 2  # n = n >> 1
