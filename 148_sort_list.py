@@ -49,8 +49,8 @@ class Solution:
         prev.next = None
 
         # sort each half
-        l1 = self.sortList(head)
-        l2 = self.sortList(slow)
+        l1 = self.sortList2(head)
+        l2 = self.sortList2(slow)
 
         return self.mergeTwoLists(l1, l2)
 
