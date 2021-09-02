@@ -11,7 +11,6 @@ class Solution:
             for coin in coins:
                 if i >= coin:
                     dp[i] = min(dp[i], dp[i - coin] + 1)
-        print(dp)
         if dp[amount] == amount + 1:
             return -1
 
