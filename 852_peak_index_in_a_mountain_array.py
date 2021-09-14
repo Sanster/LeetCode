@@ -3,15 +3,15 @@ from typing import List
 
 class Solution:
     def peakIndexInMountainArray(self, arr: List[int]) -> int:
-        # [2, 3, 4, 5, 4] m=2
-        # [1, 2, 5, 4, 3, 2, 1] m=3
         l = 0
         r = len(arr) - 1
         while l < r:
             m = (l + r) // 2
             if arr[m] < arr[m + 1]:
+                # 中点比右侧小，还在爬坡 [2, 3, 4, 5, 4] m=2
                 l = m + 1
             else:
+                # 中点比右侧大，在下坡了 [1, 2, 5, 4, 3, 2, 1] m=3
                 r = m
         return l
 
