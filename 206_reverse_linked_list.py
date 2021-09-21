@@ -22,8 +22,16 @@ class Solution:
         return last_node
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = Solution()
-    l1 = createList([1, 2, 3, 4, 5])
+    data = [
+        [1],
+        [1, 2],
+        [1, 2, 3],
+        [1, 2, 3, 4, 5],
+    ]
 
-    assert compareList(s.reverseList(l1), [5, 4, 3, 2, 1]) == True
+    for it in data:
+        it_reversed = it.copy()
+        it_reversed.reverse()
+        assert compareList(s.reverseList(createList(it)), it_reversed) is True
