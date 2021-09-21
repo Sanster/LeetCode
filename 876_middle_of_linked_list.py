@@ -2,7 +2,7 @@ from utils import ListNode, createList
 
 
 class Solution:
-    def middleNode(self, head: ListNode) -> ListNode:
+    def middleNode2(self, head: ListNode) -> ListNode:
         """
         Time O(n)
         Space O(1)
@@ -20,7 +20,7 @@ class Solution:
 
         return node
 
-    def middleNode2(self, head: ListNode) -> ListNode:
+    def middleNode(self, head: ListNode) -> ListNode:
         """
         Time O(n)
         Space O(1)
@@ -34,8 +34,14 @@ class Solution:
 
 if __name__ == "__main__":
     s = Solution()
-    a = createList([1, 2, 3, 4, 5])
-    s.middleNode2(a)
-
-    a = createList([1, 2, 3, 4, 5, 6])
-    s.middleNode2(a)
+    data = [
+        ([1, 2, 3, 4, 5], 3),
+        ([1, 2, 3, 4, 5, 6], 4),
+        ([1], 1),
+        ([1, 2], 2),
+        ([1, 2, 3], 2),
+    ]
+    for it, gt in data:
+        assert (
+            s.middleNode2(createList(it)).val == gt
+        ), f"{it} {s.middleNode2(createList(it)).val} {gt}"
