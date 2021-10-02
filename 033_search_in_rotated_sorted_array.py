@@ -11,6 +11,8 @@ class Solution:
 
         peak = 0
         while l < r:
+            if nums[0] < nums[-1]:
+                break
             mid = (l + r) // 2
             """
             mid = 3 
@@ -49,6 +51,7 @@ class Solution:
             if nums[mid] > nums[r]:
                 l = mid + 1
 
+        print(f"find peak: {target}, {peak}")
         if target <= nums[-1]:
             l = peak
             r = len(nums) - 1
@@ -60,15 +63,16 @@ class Solution:
             mid = (l + r) // 2
             if nums[mid] == target:
                 return mid
-            if nums[l] == target:
-                return l
-            if nums[r] == target:
-                return r
 
             if nums[mid] > target:
                 r = mid
             if nums[mid] < target:
                 l = mid + 1
+
+        if nums[l] == target:
+            return l
+        if nums[r] == target:
+            return r
 
         return -1
 
@@ -79,6 +83,8 @@ if __name__ == "__main__":
         ([4, 5, 6, 7, 0, 1, 2], 0, 4),
         ([4, 5, 6, 7, 0, 1, 2], 3, -1),
         ([1], 0, -1),
+        ([1], 1, 0),
+        ([1, 3, 5], 0, -1),
         ([4, 5, 6, 7, 0, 1, 2], 2, 6),
     ]
     for nums, target, gt in data:
