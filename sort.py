@@ -47,7 +47,8 @@ def swap(arr, idx1, idx2):
 
 
 def partition(arr, left, right):
-    # TODO: 理解这里
+    # index 表示大于 pivot 第一个元素的索引
+    # 最后返回 index - 1 表示主点位置
     pivot = left
     index = pivot + 1
     i = index
